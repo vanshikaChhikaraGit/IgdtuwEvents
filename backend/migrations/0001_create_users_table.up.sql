@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users(
+    user_id SERIAL PRIMARY KEY,
+    clerk_user_id VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(50),
+    email VARCHAR(300) UNIQUE NOT NULL
+);

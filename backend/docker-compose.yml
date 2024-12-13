@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    build: 
+      context: . 
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - DATABASE_URL=postgresql://code:kjrkB6yPPJDVUwujmqa6ES5V3rEesNYZ@dpg-cte9ho52ng1s73b1bms0-a.oregon-postgres.render.com/igdtuwevents
+    networks:
+      - default
+
+networks:
+  default:
