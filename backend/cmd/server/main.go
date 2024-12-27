@@ -9,7 +9,7 @@ import (
 	"igdtuevents/routes/societies"
 	"log"
 	"os"
-
+"github.com/gin-contrib/cors"
 	"github.com/clerk/clerk-sdk-go/v2"
 	"github.com/gin-gonic/gin"
 )
@@ -57,6 +57,12 @@ func main(){
 		})
 
 	}
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"}, // Allow requests from localhost:3000
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"}, // Allow specific methods
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"}, // Allow headers
+		AllowCredentials: true, // Allow cookies and credentials
+	}))
 
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
