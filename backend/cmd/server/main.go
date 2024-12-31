@@ -63,9 +63,8 @@ func main(){
 		})
 
 	}
-	frontendurl:= os.Getenv("FRONTEND_URL")
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000",frontendurl},
+		AllowOrigins:     []string{"http://localhost:3000","https://igdtuw-events.vercel.app"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		AllowCredentials: true,
