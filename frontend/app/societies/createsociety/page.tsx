@@ -13,7 +13,7 @@ import { FaLink } from "react-icons/fa";
 import { LuCalendarDays } from "react-icons/lu";
 import { IoPerson } from "react-icons/io5";
 import { useState } from 'react'
-
+import axios from "axios"
 import {
   Form,
   FormControl,
@@ -36,7 +36,6 @@ const formatDate = (date:Date)=>{
 
 
 }
-const axios = require('axios').default
 const formSchema = z.object({
   societyname: z.string().min(2, {
     message: "society name must be at least 2 characters.",

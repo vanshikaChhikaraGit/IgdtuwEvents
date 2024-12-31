@@ -5,7 +5,7 @@ import { error } from "console"
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import { useEffect, useState } from "react"
-const axios = require('axios').default
+import axios from "axios";
 import { CiLocationOn } from "react-icons/ci";
 interface Event {
   event_id: number;
@@ -25,11 +25,10 @@ export default function Home(){
     useEffect(()=>{
       const fetchEvents = async ()=>{
         try{
-          const response = await axios.get(`${backendurl}/events/getallevents`);
+          const response = await axios.get<{ events:Event[] }>(`${backendurl}/events/getallevents`);
           setAllEvents(response.data.events)
-          
-          
-        }catch(err){
+         
+         }catch(err){
           console.log("error fetching events:",err)
         }
           
@@ -57,7 +56,7 @@ export default function Home(){
       <div className="container mx-auto px-4">
         <h1 className="sm:text-4xl text-2xl font-bold ml-4 text-sky-900">Explore</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
-          {allEvents.map( (res)=>{
+          {allEvents.length>0? allEvents.map((res)=>{
             const [eventDate,eventTime] = res.event_start_date.split(' ')
             const date = eventDate.split('-').reverse().join('-')
             const time = `${eventTime.slice(0,2)}:${eventTime.slice(3,5)}`
@@ -85,7 +84,7 @@ export default function Home(){
               </div>
               </Link> 
             )
-            })}
+            }):<ShimmerUI></ShimmerUI>}
 
 
         </div>

@@ -8,8 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge"
 import ParticularShimmerUI from "@/components/shared/particularShimmer";
 import Footer from "@/components/shared/footer";
-
-const axios = require('axios').default
+import axios from "axios";
 interface Event{
   event_name: string;
   event_description: string;
@@ -28,7 +27,7 @@ export default function EventById(){
   useEffect(()=>{
     const fetchEventByID= async()=>{
       try {
-        const response = await axios.get(`${backendurl}/events/getevent/${params.event_id}`)
+        const response = await axios.get<{event:Event}>(`${backendurl}/events/getevent/${params.event_id}`)
         setEventById(response.data.event)
         console.log(JSON.stringify(response.data))
       } catch (error) {

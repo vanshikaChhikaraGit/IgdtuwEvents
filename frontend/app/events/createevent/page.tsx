@@ -13,7 +13,7 @@ import { FaLink } from "react-icons/fa";
 import { LuCalendarDays } from "react-icons/lu";
 import { IoPerson } from "react-icons/io5";
 import { useState } from 'react'
-
+import axios from "axios"
 import {
   Form,
   FormControl,
@@ -33,10 +33,7 @@ const formatDate = (date:Date)=>{
   const minutes = String(date.getMinutes()).padStart(2, '0');
 
   return `${year}-${month}-${day} ${hours}:${minutes}`;
-
-
 }
-const axios = require('axios').default
 const formSchema = z.object({
   eventname: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -56,19 +53,10 @@ const formSchema = z.object({
     message:"location name cannot exceed 75 characters"
   }),
 })
-// EventId int `json:"-" validate:"omitempty" pg:"event_id,pk"`
-// EventName string `json:"event_name" validate:"required,min=1,max=75"`
-// EventDescription *string `json:"event_description" validate:"omitempty,max=300"`
-// OrganizedBy string `json:"organized_by" validate:"required,max=75"`
-// EventStartDate string `json:"event_start_date" validate:"required"`
-// EventEndDate string `json:"event_end_date" validate:"required"`
-// RegistrationLink *string `json:"registration_link" validate:"omitempty"`
-// Location string `json:"location" validate:"required,max=75"`
 
 export default function ProfileForm() {
   const { toast } = useToast()
     const router = useRouter()
-    // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
@@ -78,8 +66,7 @@ export default function ProfileForm() {
         eventenddate:"",
         registrationlink:"",
         location:""
-      
-      },
+       },
       
     })
     

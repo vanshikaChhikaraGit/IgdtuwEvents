@@ -10,8 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { MdOutlineKeyboardCommandKey } from "react-icons/md";
 import ParticularShimmerUI from "@/components/shared/particularShimmer";
 import Footer from "@/components/shared/footer";
-
-const axios = require('axios').default
+import axios from "axios";
 interface Society{
   society_name: string;
   society_description: string;
@@ -28,7 +27,7 @@ export default function EventById(){
   useEffect(()=>{
     const fetchSocietyByID= async()=>{
       try {
-        const response = await axios.get(`${backendurl}/society/getsociety/${params.society_id}`)
+        const response = await axios.get<{society:Society}>(`${backendurl}/society/getsociety/${params.society_id}`)
         setSocietyById(response.data.society)
         console.log(JSON.stringify(response.data))
       } catch (error) {

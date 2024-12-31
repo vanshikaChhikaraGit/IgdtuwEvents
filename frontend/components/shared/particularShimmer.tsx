@@ -6,11 +6,11 @@ export default function ParticularShimmerUI(){
       
       <div className="max-w-screen h-full">
         
-            <div className="animate-pulse p-1 border border-gray-200 rounded-lgbg-white shadow-md">
-            <div className="h-screen w-full p-2 border-2 border-gray-400 bg-gray-300 rounded-2xl">
+            <div className="animate-pulse p-2 border border-gray-200 rounded-lgbg-white shadow-md">
+            <div className="h-50 w-full p-2 border-2 border-gray-400 bg-gray-300 rounded-2xl">
             <div className="mt-4">
-            <div className="h-10 border-2 border-gray-400 bg-gray-300 rounded-2xl w-full flex justify-center items-center m-2 "></div>
-            <div className="h-10 border-2 border-gray-400 bg-gray-300 rounded-2xl w-full m-2 flex justify-center items-center"></div>
+            <div className="h-10 border-2 border-gray-400 bg-gray-300 rounded-2xl w-3/4 flex justify-center items-center m-2 "></div>
+            <div className="h-10 border-2 border-gray-400 bg-gray-300 rounded-2xl w-3/4 m-2 flex justify-center items-center"></div>
             <div className="flex flex-row justify-center items-center">
             <div className="h-6 border-2 border-gray-400 bg-gray-300 rounded-full w-1/4 m-2"></div>
             <div className="h-6 border-2 border-gray-400 bg-gray-300 rounded-full w-3/4 m-2"></div>

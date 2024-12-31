@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useSocietyTypeIcon } from "@/hooks/use-societytypeicon";
 import Link from "next/link";
 import { useEffect, useState } from "react"
-const axios = require('axios').default
+import axios from "axios";
 interface Society {
     society_id: number,
     society_name: string,
@@ -22,10 +22,8 @@ export default function Home(){
     useEffect(()=>{
       const fetchSocieties = async ()=>{
         try{
-          const response = await axios.get(`${backendurl}/society/getallsocieties`);
+          const response = await axios.get<{societies:Society[]}>(`${backendurl}/society/getallsocieties`);
           setAllSocieties(response.data.societies)
-          
-          
         }catch(err){
           console.log("error fetching societies:",err)
         }
