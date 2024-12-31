@@ -1,15 +1,21 @@
 'use client'
-import { SignedIn, SignedOut, SignInButton, UserButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton, useAuth, useClerk } from "@clerk/nextjs";
 import Link from "next/link";
 import { GiPartyPopper } from "react-icons/gi";
 import { GiBulb } from "react-icons/gi";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { IoReorderThreeOutline } from "react-icons/io5";
 
 export default function CreateEventHeader(){
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
+  const { signOut } = useClerk()
+  const handleSignOut = async()=>{
+    await signOut()
+    router.push("/")
+  }
   return <header className="w-full border-b border-gray-300flex">
         <div className="wrapper flex items-center justify-between">
             <Link href={"/"}>
@@ -46,7 +52,9 @@ export default function CreateEventHeader(){
         <div className="flex justify-end items-center gap-2 relative z-20">
             
             <SignedIn >
-                <UserButton afterSignOutUrl="/"></UserButton>
+                <UserButton afterSignOutUrl="/">
+                <Button onClick={handleSignOut}>SignOut</Button>
+                </UserButton>
             </SignedIn>
             <SignedOut>
                <div className="bg-gradient-to-r from-blue-500 to-blue-700 font-medium text-white py-2 px-4 rounded-full shadow-lg ">

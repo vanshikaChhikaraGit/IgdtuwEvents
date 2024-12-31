@@ -1,14 +1,21 @@
 'use client'
-import { SignedIn, SignedOut, SignInButton, UserButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton, useAuth,useClerk } from "@clerk/nextjs";
 import Link from "next/link";
 import { GiPartyPopper } from "react-icons/gi";
 import { GiBulb } from "react-icons/gi";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { IoReorderThreeOutline } from "react-icons/io5";
-
+import { useNavigate } from 'react-router-dom'; 
 export default function CreateSocietyHeader(){
+    const router = useRouter();
+    const { signOut } = useClerk();
+
+  const handleSignOut = async () => {
+    await signOut();  // Sign the user out
+    router.push('/');
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return <header className="w-full border-b flex">
         <div className="wrapper flex items-center justify-between">
@@ -46,7 +53,9 @@ export default function CreateSocietyHeader(){
         <div className="flex justify-end items-center gap-2 relative z-20">
             
             <SignedIn >
-                <UserButton afterSignOutUrl="/"></UserButton>
+                <UserButton afterSignOutUrl="/">
+                <button onClick={handleSignOut}>Sign Out</button>
+                </UserButton>
             </SignedIn>
             <SignedOut>
                <div className="bg-gradient-to-r from-blue-500 to-blue-700 font-medium text-white py-2 px-4 rounded-full shadow-lg ">
