@@ -10,12 +10,7 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 
 export default function CreateEventHeader(){
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const router = useRouter()
-  const { signOut } = useClerk()
-  const handleSignOut = async()=>{
-    await signOut()
-    router.push("/")
-  }
+  
   return <header className="w-full border-b border-gray-300flex">
         <div className="wrapper flex items-center justify-between">
             <Link href={"/"}>
@@ -23,13 +18,13 @@ export default function CreateEventHeader(){
              </Link>
 
        <div className="flex items-center">
-        <button className="block md:hidden rounded-full bg-indigo-300 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button className="block md:hidden rounded-full bg-indigo-300 p-2 z-20" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <IoReorderThreeOutline />
         </button>
         <div
     className={`${
       isMenuOpen ? "block" : "hidden"
-    } items-center md:flex flex-col md:flex-row absolute md:static top-10 right-0 p-4 shadow-lg md:shadow-none z-10`}
+    } items-center md:flex flex-col md:flex-row absolute md:static top-10 right-0 p-4 shadow-lg md:shadow-none z-20 bg-white justify-center`}
   >
        <Link href="/events">
           <div className="flex items-center m-2 rounded-lg transition-shadow duration-200 ease-in-out w-full max-w-xs ">
@@ -52,9 +47,7 @@ export default function CreateEventHeader(){
         <div className="flex justify-end items-center gap-2 relative z-20">
             
             <SignedIn >
-                <UserButton afterSignOutUrl="/">
-                <Button onClick={handleSignOut}>SignOut</Button>
-                </UserButton>
+                <UserButton afterSignOutUrl="/"></UserButton>
             </SignedIn>
             <SignedOut>
                <div className="bg-gradient-to-r from-blue-500 to-blue-700 font-medium text-white py-2 px-4 rounded-full shadow-lg ">

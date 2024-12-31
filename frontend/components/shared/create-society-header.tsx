@@ -24,13 +24,13 @@ export default function CreateSocietyHeader(){
              </Link>
 
        <div className="flex items-center">
-        <button className="block md:hidden rounded-full bg-indigo-300 p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button className="block md:hidden rounded-full bg-indigo-300 p-2 z-20" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <IoReorderThreeOutline />
         </button>
         <div
     className={`${
       isMenuOpen ? "block" : "hidden"
-    } items-center md:flex flex-col md:flex-row absolute md:static top-10 right-0 p-4 shadow-lg md:shadow-none z-10`}
+    } items-center md:flex flex-col md:flex-row absolute md:static top-10 right-0 p-4 shadow-lg md:shadow-none bg-white z-20`}
   >
        <Link href="/events">
           <div className="flex items-center m-2 rounded-lg transition-shadow duration-200 ease-in-out w-full max-w-xs ">
