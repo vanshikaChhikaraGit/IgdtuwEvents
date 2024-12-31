@@ -1,6 +1,6 @@
 import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
-
+import { Analytics } from "@vercel/analytics/react"
 export default function RootLayout({
     children,
   }: {
@@ -9,7 +9,10 @@ export default function RootLayout({
     return (
       <div className="flex h-screen flex-col">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          {children}
+          <Analytics></Analytics>
+        </main>
         <Footer />
       </div>
     )

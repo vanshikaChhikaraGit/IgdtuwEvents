@@ -36,7 +36,7 @@ export default function Home(){
       fetchEvents()
       },[]
     )
-    if(!allEvents || allEvents.length==0){
+    if(!allEvents || allEvents.length===0){
       return <ShimmerUI></ShimmerUI>
     }
     return (
@@ -78,9 +78,9 @@ export default function Home(){
                 </div>
                 </div>
               </div>
-              <Button className="rounded-full mt-2 bg-red-500 hover:bg-sky-600" onClick={()=>{
-                window.location.href=res.registration_link
-              }}>Register</Button>
+              <Link href={res.registration_link}>
+               <Button className="rounded-full mt-2 bg-red-500 hover:bg-sky-600"> Register</Button>
+              </Link>
               </div>
               </Link> 
             )

@@ -67,11 +67,9 @@ export default function Home(){
                     {(res.society_type==="dance"?<img src="assets/images/dancing.png" className="m-2 h-10 w-12"></img>:useSocietyTypeIcon(res.society_type))}
                   <p className="ml-1 text-sm text-gray-700">{res.society_type}</p>
                 </div>
-                
-             
-              <Button className="rounded-full mt-2 bg-red-500 hover:bg-sky-600" onClick={()=>{
-                window.location.href=res.registration_link
-              }}>Register</Button>
+                <Link href={res.registration_link}>
+                <Button className="rounded-full mt-2 bg-red-500 hover:bg-sky-600">Register</Button>
+                </Link>
               </div>
               </Link>
             )
