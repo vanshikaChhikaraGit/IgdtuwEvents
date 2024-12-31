@@ -74,8 +74,8 @@ func CreateSociety(c *gin.Context, database *pg.DB){
 
 	c.JSON(200,gin.H{
 		"message":"society created",
-		"eventID": society.SocietyId,
-		"event": society,
+		"societyID": society.SocietyId,
+		"soceity": society,
 		"status":society.Status,
 	})
 

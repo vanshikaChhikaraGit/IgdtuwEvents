@@ -41,6 +41,9 @@ func main(){
 		event.GET("/getallevents", func(c *gin.Context) {
 			events.GetAllEvents(c, database)
 		})
+		event.GET("/getevent/:eventID",func(c *gin.Context) {
+			events.GetEventById(c,database)
+		})
 	}
 	society:=router.Group("/society")
 	// society.Use(middlewares.ClerkMiddleware)
@@ -55,13 +58,17 @@ func main(){
 		society.GET("/getallsocieties", func(c *gin.Context) {
 			societies.GetAllSocieties(c,database)
 		})
+		society.GET("/getsociety/:societyID",func(c *gin.Context) {
+			societies.GetSocietyById(c,database)
+		})
 
 	}
+	frontendurl:= os.Getenv("FRONTEND_URL")
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"}, // Allow requests from localhost:3000
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"}, // Allow specific methods
-		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"}, // Allow headers
-		AllowCredentials: true, // Allow cookies and credentials
+		AllowOrigins:     []string{"http://localhost:3000",frontendurl},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		AllowCredentials: true,
 	}))
 
 	router.GET("/ping", func(c *gin.Context) {

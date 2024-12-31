@@ -31,7 +31,7 @@ func DeleteSociety(c *gin.Context, db *pg.DB){
         return
     }
 	c.JSON(200,gin.H{
-		"message":"event deleted successfully",
+		"message":"society deleted successfully",
 		"societyID":societyID,
 	})
 
