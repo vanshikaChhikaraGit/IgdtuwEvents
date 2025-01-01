@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 
-	// "igdtuevents/middlewares"
 	db "igdtuevents/pkg"
 	"igdtuevents/routes/events"
 	"igdtuevents/routes/societies"
@@ -30,7 +29,6 @@ func main(){
 	})
 	
 	event:=router.Group("/events")
-	// event.Use(middlewares.ClerkMiddleware)
 	{
 		event.POST("/createevent", func(c *gin.Context) {
 			events.CreateEvent(c, database)
@@ -46,7 +44,6 @@ func main(){
 		})
 	}
 	society:=router.Group("/society")
-	// society.Use(middlewares.ClerkMiddleware)
 	{
 
 		society.POST("/createsociety", func(c *gin.Context) {
@@ -77,11 +74,5 @@ func main(){
 	})
 	
     router.Run(":8080")
-	
-	
-
-	
-
-	
 	
 }
