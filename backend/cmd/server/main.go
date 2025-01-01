@@ -64,7 +64,7 @@ func main(){
 
 	}
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://igdtuw-events.vercel.app"},
+		AllowOrigins:     []string{"https://igdtuw-events-ig03audw9-vanshika-chhikaras-projects.vercel.app","https://igdtuw-events.vercel.app"},
 		AllowMethods:     []string{"*"},
 		AllowHeaders:     []string{"*"},
 		AllowCredentials: true,
