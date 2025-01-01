@@ -11,6 +11,7 @@ import (
 "github.com/gin-contrib/cors"
 	"github.com/clerk/clerk-sdk-go/v2"
 	"github.com/gin-gonic/gin"
+	"time"
 )
 
 func main(){
@@ -23,6 +24,16 @@ func main(){
 	clerk.SetKey(CLERK_ENV_KEY)
 
 	router:= gin.Default()
+
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"https://igdtuw-events-ig03audw9-vanshika-chhikaras-projects.vercel.app", "https://igdtuw-events.vercel.app", "http://localhost:3000"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization", "Accept"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
+
 	router.Use(func(c *gin.Context) {
 		fmt.Println("Incoming request:", c.Request.Method, c.Request.URL.Path)
 		c.Next()
@@ -60,12 +71,6 @@ func main(){
 		})
 
 	}
-	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
-		AllowCredentials: true,
-	}))
 
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
