@@ -3,10 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   
-  
-};
-module.exports = {
-  reactStrictMode: true,
+  reactStrictMode: true, // Ensures React Strict Mode is enabled
+  swcMinify: true,     
 };
 
 export default nextConfig;
