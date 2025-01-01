@@ -26,7 +26,7 @@ func main(){
 	router:= gin.Default()
 
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://igdtuw-events.vercel.app", "http://localhost:3000"},
+		AllowOrigins:     []string{"https://igdtuw-events-ig03audw9-vanshika-chhikaras-projects.vercel.app", "https://igdtuw-events.vercel.app", "http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization", "Accept"},
 		ExposeHeaders:    []string{"Content-Length"},
