@@ -190,8 +190,8 @@ export default function ProfileForm() {
               onValueChange={(value) => field.onChange(value)}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="type1" id="type1" />
-                <label htmlFor="type1" className="text-sm text-gray-700">
+                <RadioGroupItem value="technical" id="technical" />
+                <label htmlFor="technical" className="text-sm text-gray-700">
                   Technical
                 </label>
               </div>
