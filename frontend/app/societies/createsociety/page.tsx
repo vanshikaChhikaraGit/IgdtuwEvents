@@ -23,6 +23,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation"
 const formatDate = (date:Date)=>{
@@ -51,6 +53,7 @@ const formSchema = z.object({
 })
 
 export default function ProfileForm() {
+  const [position, setPosition] = useState("bottom")
   const { toast } = useToast()
     const router = useRouter()
     const backendurl = process.env.NEXT_PUBLIC_BACKEND_URL
@@ -92,8 +95,7 @@ export default function ProfileForm() {
           toast({
             variant: "default",
             title: "Society Created Successfully!",
-            // description: "There was a problem with your request.",
-            // action: <ToastAction altText="Try again">Event Created Successfully!</ToastAction>,
+           
           })
 
         router.push('/societies')
@@ -102,7 +104,6 @@ export default function ProfileForm() {
                 variant: "destructive",
                 title: "Uh oh! Something went wrong.",
                 description: "There was a problem with your request.",
-                // action: <ToastAction altText="Try again">Try again</ToastAction>,
               })
             
       }
@@ -130,12 +131,9 @@ export default function ProfileForm() {
         </div>
         <h1 className="text-center font-semibold text-5xl sm:text-3xl mb-2">Create Society</h1>
       
-        {/* Single Form Element */}
         <Form {...form}>
-          {/* Main Form Tag */}
           <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-sm mx-auto shadow-md bg-pink-50 rounded-xl p-4 text-xl">
             
-            {/* Event Name Field */}
             <FormField
               control={form.control}
               name="societyname"
@@ -152,7 +150,6 @@ export default function ProfileForm() {
               )}
             />
             
-            {/* Event Description Field */}
             <FormField
               control={form.control}
               name="societydescription"
@@ -177,12 +174,73 @@ export default function ProfileForm() {
                 <FormItem>
                   <FormLabel className="block m-2 text-xl font-medium">Society Type</FormLabel>
                   <FormControl>
-                    <div className="flex shadow-md items-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 resize-none">
-                        <IoPerson></IoPerson>
-                    <Input className="border-none resize-none"
-                      {...field}
-                    />
-                    </div>
+                  <Popover>
+          <PopoverTrigger asChild>
+            <div
+              className="flex shadow-md items-center bg-white border border-gray-300 text-black text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 resize-none cursor-pointer"
+            >
+              <IoPerson />
+              <span className="ml-2">{field.value || "Select Society Type"}</span>
+            </div>
+          </PopoverTrigger>
+          <PopoverContent className="w-full max-w-sm bg-white border-0 rounded-3xl text-black">
+            <RadioGroup
+              className="space-y-2"
+              value={field.value}
+              onValueChange={(value) => field.onChange(value)}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="type1" id="type1" />
+                <label htmlFor="type1" className="text-sm text-gray-700">
+                  Technical
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="dance" id="dance" />
+                <label htmlFor="dance" className="text-sm text-gray-700">
+                  Dance
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="music" id="music" />
+                <label htmlFor="music" className="text-sm text-gray-700">
+                  Music
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="art" id="art" />
+                <label htmlFor="art" className="text-sm text-gray-700">
+                  Art
+                </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                <RadioGroupItem value="drama" id="drama" />
+                <label htmlFor="drama" className="text-sm text-gray-700">
+                 Drama
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="literary" id="literary" />
+                <label htmlFor="literary" className="text-sm text-gray-700">
+                Literary
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="sports" id="sports" />
+                <label htmlFor="sports" className="text-sm text-gray-700">
+                Sports
+                </label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="other" id="other" />
+                <label htmlFor="other" className="text-sm text-gray-700">
+                Other
+                </label>
+              </div>
+            
+            </RadioGroup>
+          </PopoverContent>
+        </Popover>
                     
                   </FormControl>
                   <FormDescription>

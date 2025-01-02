@@ -70,8 +70,9 @@ export default function EventById(){
           </div>
          <div className="flex flex-col sm:flex-row m-2 justify-center items-center">
           <div>
-          <Badge variant={"outline"} className="m-1 p-2 sm:mb-0 border-red-400 border-2"><ImLink className="inline-block mr-2"></ImLink></Badge>
-          <Button variant={"destructive"} className="bg-red-600 rounded-full"onClick={()=>{ window.location.href = societyById?.registration_link || " "}}>Register</Button>
+          
+          <Button variant={"destructive"} className="bg-red-600 rounded-full hover:bg-transparent hover:border-2 hover:border-red-500"onClick={()=>{ window.location.href = societyById?.registration_link || " "}}>Register</Button>
+          
           </div>
         
          </div>

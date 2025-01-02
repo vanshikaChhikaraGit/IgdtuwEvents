@@ -63,7 +63,7 @@ export default function Home(){
             return (
            <Link href={`/events/${res.event_id}`}><div key={res.event_id} className="w-full hover:cursor-pointer max-w-screen-xl border border-slate-200 bg-white rounded-xl p-4">
               <h2 className="text-center font-semibold text-xl text-gray-800">{res.event_name}</h2>
-              <div className="">
+              <div >
               <div className="mt-4 flex justify-between items-center">
                 <div className="flex flex-col text-left">
                   <span className="text-lg font-medium text-gray-700">
@@ -78,9 +78,14 @@ export default function Home(){
                 </div>
                 </div>
               </div>
+              <div className="flex justify-between">
               <Link href={res.registration_link}>
-               <Button className="rounded-full mt-2 bg-red-500 hover:bg-sky-600"> Register</Button>
+               <Button className="rounded-full mt-2 bg-red-500 hover:bg-transparent hover:border-2 hover:border-sky-500"> Register</Button>
               </Link>
+              <Link href={`/events/${res.event_id}`}>
+              <Button className="rounded-full mt-2 bg-gray-800 text-white hover:bg-transparent hover:border-2 hover:border-sky-500 hover:text-black"> Details</Button>
+              </Link>
+              </div>
               </div>
               </Link> 
             )

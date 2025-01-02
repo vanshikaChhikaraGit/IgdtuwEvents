@@ -4,21 +4,21 @@ import { GiTheater } from "react-icons/gi";
 export function useSocietyTypeIcon(type:string){
 
     switch (type.toLowerCase()) {
-        // case "dance":
-        //   return <GiDancer className="text-cyan-600 text-xl" />;
+        case "dance":
+          return <img src="assets/images/dancing.png"  className="m-2 h-10 w-12"></img>
         case "music":
-          return <FaMusic className="text-cyan-600 text-xl" />;
+          return <img src="assets/images/music.png" className="m-2 h-10 w-12"></img>
         case "drama":
-          return <GiTheater className="text-cyan-600 text-xl" />;
+          return <img src="assets/images/theater.png" className="m-2 h-10 w-12"></img>
         case "art":
-          return <FaPaintBrush className="text-cyan-600 text-xl" />;
+          return <img src="assets/images/art.png" className="m-2 h-10 w-12"></img>
         case "technical":
-          return <FaUsers className="text-cyan-600 text-xl" />;
+          return <img src="assets/images/technical.png" className="m-2 h-10 w-12"></img>
         case "literary":
-          return <FaBookOpen className="text-cyan-600 text-xl" />;
+          return  <img src="assets/images/book.png" className="m-2 h-10 w-12"></img>
         case "sports":
-          return <FaRunning className="text-cyan-600 text-xl" />;
+          return <img src="assets/images/running.png" className="m-2 h-10 w-12"></img>
         default:
-          return <FaUsers className="text-cyan-600 text-xl" />; // Default icon
+          return <FaUsers className="text-cyan-600 text-4xl" />; // Default icon
       }
 }

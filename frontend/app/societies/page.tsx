@@ -53,23 +53,26 @@ export default function Home(){
         <h1 className="text-2xl sm:text-4xl font-bold ml-4 text-sky-900">Explore</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
           {allSocieties.map((res)=>{
-            const truncatedDescription = res.society_description.length>40? res.society_description.slice(0,40)+"...":res.society_description
+            
             
             return (<Link href={`/societies/${res.society_id}`}>
             <div key={res.society_id} className="w-full hover:cursor-pointer max-w-screen-xl border border-slate-200 bg-white rounded-xl p-4">
               <h2 className="text-center font-semibold text-xl text-gray-800">{res.society_name}</h2>
-              <div className="break-words">
-             {truncatedDescription}
-              </div>
+              
                 
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center justify-center">
                     
-                    {(res.society_type==="dance"?<img src="assets/images/dancing.png" className="m-2 h-10 w-12"></img>:useSocietyTypeIcon(res.society_type))}
+                    {useSocietyTypeIcon(res.society_type)}
                   <p className="ml-1 text-sm text-gray-700">{res.society_type}</p>
                 </div>
-                <Link href={res.registration_link}>
-                <Button className="rounded-full mt-2 bg-red-500 hover:bg-sky-600">Register</Button>
-                </Link>
+                <div className="flex justify-between m-4">
+              <Link href={res.registration_link}>
+               <Button className="rounded-full mt-2 bg-red-500 hover:bg-transparent hover:border-2 hover:border-sky-500"> Register</Button>
+              </Link>
+              <Link href={`/societies/${res.society_id}`}>
+              <Button className="rounded-full mt-2 bg-gray-800 text-white hover:bg-transparent hover:border-2 hover:border-sky-500 hover:text-black"> Details</Button>
+              </Link>
+              </div>
               </div>
               </Link>
             )

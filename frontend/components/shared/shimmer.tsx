@@ -1,5 +1,3 @@
-import { Skeleton } from "@/components/ui/skeleton"
-
 export default function ShimmerUI(){
     return (
         <div className="relative isolate px-6 pt-14 lg:px-8">
